@@ -48,22 +48,12 @@ Event::create([
 $event->delete();
 ```
 
-Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all our open source projects [on our website](https://spatie.be/opensource).
-
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-google-calendar.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-google-calendar)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
-
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require spatie/laravel-google-calendar
+composer require eug3ne/laravel-google-calendar
 ```
 
 You must publish the configuration with this command:
@@ -116,47 +106,48 @@ return [
 
 ## How to obtain the credentials to communicate with Google Calendar
 
-The first thing you’ll need to do is get credentials to use Google's API. I’m assuming that you’ve already created a Google account and are signed in. Head over to [Google API console](https://console.developers.google.com/apis) and click "Select a project" in the header.
+1. The first thing you’ll need to do is get credentials to use Google's API. I’m assuming that you’ve already created a Google account and are signed in. Head over to [Google API console](https://console.developers.google.com/apis) and click "Select a project" in the header.
 
-![1](./docs/v2/1.png)
+![1](https://github.com/spatie/laravel-google-calendar/raw/master/docs/v2/1.png)
 
-Next up we must specify which APIs the project may consume. From the header, select "Enable APIs and Services".
+2. Next up we must specify which APIs the project may consume. From the header, select "Enable APIs and Services".
 
-![2](./docs/v2/2.png)
+![2](https://github.com/spatie/laravel-google-calendar/raw/master/docs/v2/2.png)
 
-On the next page, search for "Calendar" and select "Google Calendar API" from the list.
+3. On the next page, search for "Calendar" and select "Google Calendar API" from the list.
 
-![3](./docs/v2/3.png)
+![3](https://github.com/spatie/laravel-google-calendar/raw/master/docs/v2/3.png)
 
-From here, press "Enable" to enable the Google Calendar API for this project.
+4. From here, press "Enable" to enable the Google Calendar API for this project.
 
-![4](./docs/v2/4.png)
+![4](https://github.com/spatie/laravel-google-calendar/raw/master/docs/v2/4.png)
 
-Now that you've created a project that has access to the Calendar API it's time to download a file with these credentials. Click "Credentials" in the sidebar and then press the "Credentials in APIs & Services" link.
+5. Now that you've created a project that has access to the Calendar API it's time to download a file with these credentials. Click "Credentials" in the sidebar and then press the "Credentials in APIs & Services" link.
 
-![5](./docs/v2/5.png)
+![5](https://github.com/spatie/laravel-google-calendar/raw/master/docs/v2/5.png)
 
-From this page, open the "Create credentials" drop-down and select "Service account key".
+6. From this page, open the "Create credentials" drop-down and select "Service account key".
 
-![6](./docs/v2/6.png)
+![6](https://github.com/spatie/laravel-google-calendar/raw/master/docs/v2/6.png)
 
-On the next screen, you can give the service account a name. You can name it anything you’d like. In the service account id you’ll see an email address. We’ll use this email address later on in this guide. Select "JSON" as the key type and click "Create" to download the JSON file. You will get a warning that the service account does not have a role, you can safely ignore this and create the service account without assigning a role.
+7. On the next screen, you can give the service account a name. You can name it anything you’d like. In the service account id you’ll see an email address. We’ll use this email address later on in this guide. Select "JSON" as the key type and click "Create" to download the JSON file. You will get a warning that the service account does not have a role, you can safely ignore this and create the service account without assigning a role.
 
 If you have delegated domain-wide access to the service account and you want to impersonate a user account, specify the email address of the user account in the config file.
 
-![7](./docs/v2/7.png)
+![7](https://github.com/spatie/laravel-google-calendar/raw/master/docs/v2/7.png)
 
-Save the json inside your Laravel project at the location specified in the `service_account_credentials_json` key of the config file of this package. Because the json file contains potentially sensitive information, I don't recommend committing it to your git repository.
+8. Save the json inside your Laravel project at the location specified in the `service_account_credentials_json` key of the config file of this package. Because the json file contains potentially sensitive information, I don't recommend committing it to your git repository.
 
-Now that everything is set up on the API site, we’ll need to configure some things on the Google Calendar site. Head over to Google Calendar and view the settings of the calendar you want to work with via PHP.  On the "Share with specific people" tab press the "Add people" button and add the service account id that was displayed when creating credentials on the API site.
+Now that everything is set up on the API site, we’ll need to configure some things on the Google Calendar site. Head over to Google Calendar and view the settings of the calendar you want to work with via PHP.
 
-![8](./docs/v2/8.png)
+![8](https://github.com/spatie/laravel-google-calendar/raw/master/docs/v2/8.png)
 
-![9](./docs/v2/9.png)
+9. On the "Share with specific people" tab press the "Add people" button and add the service account id that was displayed when creating credentials on the API site.
+![9](https://github.com/spatie/laravel-google-calendar/raw/master/docs/v2/9.png)
 
-Scroll down to the "Integrate calendar" section to see the id of the calendar. You need to specify that id in the config file.
+10. Scroll down to the "Integrate calendar" section to see the id of the calendar. You need to specify that id in the config file.
 
-![10](./docs/v2/10.png)
+![10](https://github.com/spatie/laravel-google-calendar/raw/master/docs/v2/10.png)
 
 ### Authentication with OAuth2
 
